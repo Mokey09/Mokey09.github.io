@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Portafolio de Raúl Romero Pérez, estudiante de 2º de DAM: proyectos, tecnologías y contacto.">
+<style>:root{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Raúl Romero Pérez</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: left-aligned editorial sheet. Big name, a fact strip, then rule-separated rows for projects, stack and contact. */
+  :root {
+    --bg: #f2f5f7;
+    --surface: #ffffff;
+    --fg: #0e1a26;
+    --muted: #4a5b6b;
+    --line: #d3dce3;
+    --accent: #0a6c8b;
+    --accent-soft: #dcecf2;
+    --warn: #9a4510;
+    --warn-soft: #f8e6d9;
+    --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --font-body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0b131b;
+      --surface: #121d27;
+      --fg: #e7eef4;
+      --muted: #98a9b8;
+      --line: #243442;
+      --accent: #52b7d3;
+      --accent-soft: #14303c;
+      --warn: #e9a06a;
+      --warn-soft: #3a2517;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0b131b;
+    --surface: #121d27;
+    --fg: #e7eef4;
+    --muted: #98a9b8;
+    --line: #243442;
+    --accent: #52b7d3;
+    --accent-soft: #14303c;
+    --warn: #e9a06a;
+    --warn-soft: #3a2517;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  a:hover { text-decoration-thickness: 2px; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+  .wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+
+  /* Top bar */
+  .bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 24px;
+    padding-block: 20px;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+  }
+  .bar .mark { font-weight: 500; color: var(--fg); }
+  .bar nav { display: flex; flex-wrap: wrap; gap: 4px 22px; }
+  .bar nav a { color: var(--muted); text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; font-size: 12px; }
+  .bar nav a:hover { color: var(--accent); }
+
+  /* Hero */
+  .hero { padding-block: clamp(40px, 9vw, 96px) clamp(32px, 6vw, 56px); }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 20px;
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2.7rem, 9vw, 6rem);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    margin: 0 0 28px;
+    text-wrap: balance;
+  }
+  .lead {
+    max-width: 38em;
+    font-size: clamp(1.1rem, 2.4vw, 1.35rem);
+    line-height: 1.5;
+    color: var(--muted);
+    margin: 0;
+  }
+  .lead strong { color: var(--fg); font-weight: 600; }
+
+  /* Fact strip */
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0;
+    margin: clamp(32px, 6vw, 56px) 0 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .facts div { padding: 16px 20px 16px 0; min-width: 0; }
+  .facts dt {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 4px;
+  }
+  .facts dd { margin: 0; font-weight: 500; }
+
+  /* Sections */
+  section { padding-block: clamp(40px, 7vw, 72px) 0; }
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin: 0 0 8px;
+  }
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.7rem, 4vw, 2.3rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  /* Projects */
+  .project {
+    display: grid;
+    grid-template-columns: 190px minmax(0, 1fr);
+    gap: 12px 40px;
+    padding-block: 32px;
+    border-top: 1px solid var(--line);
+  }
+  .project:last-child { border-bottom: 1px solid var(--line); }
+  .meta { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+  .kind {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .pill {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: var(--warn-soft);
+    color: var(--warn);
+    font-weight: 500;
+  }
+  .project h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+    margin: 0 0 10px;
+  }
+  .project p { margin: 0 0 16px; max-width: 36em; color: var(--muted); }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0 0 18px; list-style: none; }
+  .tags li {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    padding: 4px 10px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    border-radius: 4px;
+  }
+  .project .go { font-weight: 600; }
+  .repos { list-style: none; margin: 0 0 18px; padding: 0; border-top: 1px solid var(--line); }
+  .repos li { border-bottom: 1px solid var(--line); }
+  .repos a {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+    padding: 10px 2px; text-decoration: none; color: var(--fg); font-weight: 500;
+  }
+  .repos a span { font-family: var(--font-mono); font-size: 12.5px; font-weight: 400; color: var(--muted); overflow-wrap: anywhere; text-align: right; min-width: 0; }
+  .repos a:hover { color: var(--accent); }
+  .repos a:hover span { color: var(--accent); }
+  .repos-title { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
+
+  /* Stack */
+  .stack { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 40px; margin-top: 24px; }
+  .stack > div { padding-block: 24px; border-top: 1px solid var(--line); min-width: 0; }
+  .stack h3 {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 14px;
+  }
+  .stack ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .stack li { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.5rem, 4vw, 2.1rem); letter-spacing: -0.02em; line-height: 1.15; }
+  .stack .now li { color: var(--accent); }
+
+  /* Contact */
+  .contact { margin-top: 24px; border-top: 1px solid var(--line); }
+  .row {
+    display: grid;
+    grid-template-columns: 130px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 8px 24px;
+    padding-block: 18px;
+    border-bottom: 1px solid var(--line);
+  }
+  .row .label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .row .value { font-weight: 500; font-size: clamp(1.05rem, 3vw, 1.3rem); overflow-wrap: anywhere; min-width: 0; }
+  .row .value a { color: var(--fg); text-decoration-color: var(--accent); }
+  .copy {
+    font: inherit;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    padding: 6px 14px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--fg);
+    border-radius: 4px;
+    cursor: pointer;
+    min-width: 84px;
+  }
+  .copy:hover { border-color: var(--accent); color: var(--accent); }
+  .copy[data-done="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+
+  footer {
+    margin-top: clamp(48px, 8vw, 88px);
+    padding-block: 24px 32px;
+    border-top: 1px solid var(--line);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+  }
+
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+    .project { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+    .meta { flex-direction: row; align-items: center; flex-wrap: wrap; gap: 10px 14px; }
+    .stack { grid-template-columns: minmax(0, 1fr); }
+    .row { grid-template-columns: minmax(0, 1fr) auto; }
+    .row .label { grid-column: 1 / -1; }
+    .facts div { padding-right: 12px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="bar">
+    <span class="mark">RR / portafolio</span>
+    <nav aria-label="Secciones">
+      <a href="#proyectos">Proyectos</a>
+      <a href="#tecnologias">Tecnologías</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <p class="eyebrow">Desarrollo de Aplicaciones Multiplataforma · 2º curso</p>
+      <h1>Raúl Romero Pérez</h1>
+      <p class="lead">Estudiante de DAM, <strong>proactivo</strong> y en búsqueda de trabajo en el sector. Programo en <strong>Java</strong> y <strong>SQL</strong>, y estoy ampliando mi base con .NET, Spring Boot y Flutter.</p>
+
+      <dl class="facts">
+        <div><dt>Formación</dt><dd>DAM, 2º curso</dd></div>
+        <div><dt>Dominio</dt><dd>Java · SQL</dd></div>
+        <div><dt>En proceso</dt><dd>.NET · Spring Boot · Flutter</dd></div>
+        <div><dt>Busco</dt><dd>Prácticas y trabajo en desarrollo</dd></div>
+      </dl>
+    </div>
+
+    <section id="proyectos" aria-labelledby="h-proyectos">
+      <div class="sec-head"><h2 id="h-proyectos">Proyectos</h2></div>
+
+      <article class="project">
+        <div class="meta">
+          <span class="kind">Aplicación de escritorio</span>
+        </div>
+        <div>
+          <h3>Gestión hotelera</h3>
+          <p>Programa de gestión hotelera con interfaz de escritorio, desarrollado en Java con Swing.</p>
+          <ul class="tags" aria-label="Tecnologías">
+            <li>Java</li>
+            <li>Swing</li>
+          </ul>
+          <p class="repos-title">Repositorios</p>
+          <ul class="repos">
+            <li><a href="https://github.com/Mokey09/BackOffice" target="_blank" rel="noopener">BackOffice <span>Mokey09/BackOffice</span></a></li>
+            <li><a href="https://github.com/Mokey09/Base-de-datos" target="_blank" rel="noopener">Base de datos <span>Mokey09/Base-de-datos</span></a></li>
+            <li><a href="https://github.com/Mokey09/DevOps" target="_blank" rel="noopener">DevOps <span>Mokey09/DevOps</span></a></li>
+            <li><a href="https://github.com/DiegoxPurge/ProyectoDamPagWeb" target="_blank" rel="noopener">Página web <span>DiegoxPurge/ProyectoDamPagWeb</span></a></li>
+          </ul>
+          <a class="go" href="https://github.com/users/Mokey09/projects/2" target="_blank" rel="noopener">Ver tablero del proyecto →</a>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="meta">
+          <span class="kind">Aplicación</span>
+          <span class="pill">En desarrollo</span>
+        </div>
+        <div>
+          <h3>Días moscosos</h3>
+          <p>App para gestionar los días moscosos del profesorado, los días de asuntos propios que cada docente puede solicitar y llevar controlados.</p>
+          <ul class="tags" aria-label="Tecnologías">
+            <li>Flutter</li>
+            <li>SQL</li>
+            <li>Spring Boot</li>
+            <li>.NET</li>
+            <li>C#</li>
+          </ul>
+          <p class="repos-title">Repositorios</p>
+          <ul class="repos">
+            <li><a href="https://github.com/Mokey09/LilBrosTeam-Proyecto2DAM-api" target="_blank" rel="noopener">API <span>LilBrosTeam-Proyecto2DAM-api</span></a></li>
+            <li><a href="https://github.com/Mokey09/LilBrosTeam-Proyecto2DAM-desktop" target="_blank" rel="noopener">Aplicación de escritorio <span>LilBrosTeam-Proyecto2DAM-desktop</span></a></li>
+            <li><a href="https://github.com/Mokey09/LilBrosTeam-Proyecto2DAM-mobile" target="_blank" rel="noopener">App móvil <span>LilBrosTeam-Proyecto2DAM-mobile</span></a></li>
+          </ul>
+          <a class="go" href="https://github.com/users/Mokey09/projects/4" target="_blank" rel="noopener">Ver tablero del proyecto →</a>
+        </div>
+      </article>
+    </section>
+
+    <section id="tecnologias" aria-labelledby="h-tec">
+      <div class="sec-head"><h2 id="h-tec">Tecnologías</h2></div>
+      <div class="stack">
+        <div>
+          <h3>Las que domino</h3>
+          <ul>
+            <li>Java</li>
+            <li>SQL</li>
+          </ul>
+        </div>
+        <div class="now">
+          <h3>Las que estoy aprendiendo</h3>
+          <ul>
+            <li>.NET / C#</li>
+            <li>Spring Boot</li>
+            <li>Flutter</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" aria-labelledby="h-contacto">
+      <div class="sec-head"><h2 id="h-contacto">Contacto</h2></div>
+      <div class="contact">
+        <div class="row">
+          <span class="label">Correo</span>
+          <span class="value"><a href="mailto:raulromeper@gmail.com" id="v-mail">raulromeper@gmail.com</a></span>
+          <button class="copy" type="button" data-target="v-mail" data-text="raulromeper@gmail.com">Copiar</button>
+        </div>
+        <div class="row">
+          <span class="label">Teléfono</span>
+          <span class="value" id="v-tel">640 90 81 90</span>
+          <button class="copy" type="button" data-target="v-tel" data-text="640908190">Copiar</button>
+        </div>
+        <div class="row">
+          <span class="label">GitHub</span>
+          <span class="value"><a href="https://github.com/Mokey09" target="_blank" rel="noopener">github.com/Mokey09</a></span>
+          <span></span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>Raúl Romero Pérez · Portafolio 2026</footer>
+</div>
+
+<script>
+  (function () {
+    function selectText(el) {
+      try {
+        var range = document.createRange();
+        range.selectNodeContents(el);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+      } catch (e) {}
+    }
+    document.querySelectorAll('.copy').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var text = btn.getAttribute('data-text');
+        var target = document.getElementById(btn.getAttribute('data-target'));
+        function done(ok) {
+          if (!ok) { selectText(target); }
+          btn.textContent = ok ? 'Copiado' : 'Seleccionado';
+          btn.setAttribute('data-done', 'true');
+          setTimeout(function () {
+            btn.textContent = 'Copiar';
+            btn.removeAttribute('data-done');
+          }, 1600);
+        }
+        try {
+          navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); });
+        } catch (e) {
+          done(false);
+        }
+      });
+    });
+  })();
+</script>
+</body>
+</html>
